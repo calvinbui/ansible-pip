@@ -1,0 +1,14 @@
+---
+
+pip_python_version: ''
+
+pip_install_packages:
+  - virtualenv
+  - name: pyyaml
+    state: present
+  - name: awscli
+    state: absent
+  - name: requests
+    virtualenv: /tmp/venv
+  - name: numpy
+    version: 1.15.4
