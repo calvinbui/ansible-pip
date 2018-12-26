@@ -5,7 +5,7 @@
   gather_facts: false
   pre_tasks:
     - name: Find python executable
-      raw: which /usr/bin/python3 || which /usr/bin/python || which /usr/bin/python2
+      raw: which /usr/bin/python3 || which /usr/bin/python2 || which /usr/bin/python
       register: py_interpreter
       changed_when: false
     - name: Set python executable
