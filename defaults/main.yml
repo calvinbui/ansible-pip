@@ -1,6 +1,7 @@
 ---
 
-pip_python_version: ''
+# set to 2 or 3 if required. leave as is to use the python Ansible uses
+pip_version: null
 
 pip_install_packages:
   - virtualenv

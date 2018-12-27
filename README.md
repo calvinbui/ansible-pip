@@ -11,7 +11,7 @@ N/A
 
 ## Role Variables
 
-`pip_python_version`: The version of Python to install (2 or 3). If left blank, it will default to what Ansible is using ont he remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`)
+`pip_version`: The version of Python to install (2 or 3). If left blank, it will default to what Ansible is using ont he remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`)
 
 `pip_install_packages`: A list of packages to install with the pip module.  Set it to `[]` if no packages are required.
 
@@ -32,7 +32,7 @@ executable
 ```
 
 Notes:
-- `executable` by default uses the Python that Ansible uses on the remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`). This can be overridden by providing the full path to the `pip` executable. **It does not match `pip_python_version`**.
+- `executable` by default uses the Python that Ansible uses on the remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`). This can be overridden by providing the full path to the `pip` executable. **It does not match `pip_version`**.
 - `name` is omitted if `requirements` is provided. They are mutually exclusive
 - `executable` is omitted if `virtualenv` is defined.
 - `executable`
