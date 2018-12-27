@@ -1,9 +1,14 @@
 ---
 
 - name: Install pip for Python version Ansible is using
-  package:
-    name: "{{ ('python3-pip' if pip_python_version == '3' else 'python-pip') if pip_python_version != '' else ('python3-pip' if ansible_python.version.major == 3 else 'python-pip') }}"
+  apt:
+    name:
+      "python{{ (3 if pip_version==3 else '') if pip_version else (3 if ansible_python.version.major==3 else '') }}-pip"
     state: present
+  register: result
+  until: result is success
+  retries: 5
+  delay: 5
 
 - name: Install pip packages
   pip:
@@ -17,5 +22,5 @@
     extra_args: "{{ item.extra_args | default(omit) }}"
     umask: "{{ item.umask | default(omit) }}"
     state: "{{ item.state | default(omit) }}"
-    executable: "{{ ('pip3' if ansible_python.version.major == 3 else 'pip') if item.virtualenv is not defined else omit }}"
+    executable: "{{ omit if item.virtualenv is defined else ('pip3' if ansible_python.version.major == 3 else 'pip') }}"
   loop: "{{ pip_install_packages }}"
