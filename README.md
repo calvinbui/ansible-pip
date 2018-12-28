@@ -1,7 +1,7 @@
 # Ansible pip
 
 
-Installs `pip` based on the version of Python that Ansible grabs.
+Installs the Python package manager `pip` based on the version provided or the version of Python that Ansible grabs as a fallback.
 
 Also installs pip packages with any of the parameters provided by the pip module.
 
@@ -11,7 +11,7 @@ N/A
 
 ## Role Variables
 
-`pip_version`: The version of Python to install (2 or 3). If left blank, it will default to what Ansible is using ont he remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`)
+`pip_version`: The version of Python to install (2 or 3). If left blank, it will default to what Ansible is using on the remote host. This means `3` if the `ansible_python.version.major` fact is `3`; and `2` if `2`
 
 `pip_install_packages`: A list of packages to install with the pip module.  Set it to `[]` if no packages are required.
 
@@ -32,10 +32,9 @@ executable
 ```
 
 Notes:
-- `executable` by default uses the Python that Ansible uses on the remote host. This means `pip3` if the `ansible_python.version.major` is `3` and `pip` if it is anything else (most likely `2`). This can be overridden by providing the full path to the `pip` executable. **It does not match `pip_version`**.
-- `name` is omitted if `requirements` is provided. They are mutually exclusive
 - `executable` is omitted if `virtualenv` is defined.
-- `executable`
+- `executable` by default uses the pip executable version being installed (a.k.a. `pip_version`). This can be overridden by providing the `pip` executable.
+- `name` is omitted if `requirements` is provided. They are mutually exclusive
 
 Examples:
 

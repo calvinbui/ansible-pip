@@ -1,9 +1,38 @@
 ---
 
+- name: Determine pip version to install and use
+  set_fact:
+    pip_version_to_use: >-
+      {%- if pip_version -%}
+        {%- if pip_version == 3 or pip_version == '3' -%}
+          3
+        {%- elif pip_version == 2 or pip_version == '2' -%}
+          2
+        {%- endif -%}
+      {%- elif ansible_python.version.major == 3 -%}
+        3
+      {%- elif ansible_python.version.major == 2 -%}
+        2
+      {%- endif -%}
+
+- name: Set pip version to {{ pip_version_to_use }}
+  set_fact:
+    pip_apt_package: >-
+      {%- if pip_version_to_use == '3' -%}
+        python3-pip
+      {%- elif pip_version_to_use == '2' -%}
+        python-pip
+      {%- endif -%}
+    pip_executable: >-
+      {%- if pip_version_to_use == '3' -%}
+        pip3
+      {%- elif pip_version_to_use == '2' -%}
+        pip2
+      {%- endif -%}
+
 - name: Install pip for Python version Ansible is using
   apt:
-    name:
-      "python{{ (3 if pip_version==3 else '') if pip_version else (3 if ansible_python.version.major==3 else '') }}-pip"
+    name: "{{ pip_apt_package }}"
     state: present
   register: result
   until: result is success
@@ -22,5 +51,12 @@
     extra_args: "{{ item.extra_args | default(omit) }}"
     umask: "{{ item.umask | default(omit) }}"
     state: "{{ item.state | default(omit) }}"
-    executable: "{{ omit if item.virtualenv is defined else ('pip3' if ansible_python.version.major == 3 else 'pip') }}"
+    executable: >-
+      {%- if item.virtualenv is defined -%}
+        {{ omit }}
+      {%- elif item.executable is defined -%}
+        {{ item.executable }}
+      {%- else -%}
+        {{ pip_executable }}
+      {%- endif -%}
   loop: "{{ pip_install_packages }}"
