@@ -10,6 +10,10 @@ platforms:
     image: ubuntu:${UBUNTU_IMAGE_TAG:-latest}
 provisioner:
   name: ansible
+  inventory:
+    host_vars:
+      all:
+        ansible_python_interpreter: /usr/bin/python${PYTHON_INTERPRETOR:-2}
   lint:
     name: ansible-lint
 scenario:
