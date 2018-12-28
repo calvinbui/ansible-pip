@@ -70,8 +70,8 @@ pip_install_packages:
     virtualenv: /tmp/venv
 
   # with version
-  - name: numpy
-    version: 1.15.4
+  - name: jinja2
+    version: 2.10
 
   # with requirements file
   - requirements: /tmp/requirements.txt
