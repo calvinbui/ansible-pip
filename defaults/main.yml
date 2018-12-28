@@ -4,6 +4,7 @@
 pip_version: null
 
 pip_install_packages:
+  - setuptools
   - virtualenv
   - name: pyyaml
     state: present
