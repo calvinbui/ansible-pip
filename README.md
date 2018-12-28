@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/calvinbui/ansible-pip.svg?branch=master)](https://travis-ci.com/calvinbui/ansible-pip)
 [![](https://img.shields.io/ansible/role/d/35859.svg)](https://galaxy.ansible.com/calvinbui/ansible_pip)
 
 # Ansible pip
