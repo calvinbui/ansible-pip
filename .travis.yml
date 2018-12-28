@@ -4,7 +4,7 @@ services:
   - docker
 python:
   - "2.7"
-  - "3.7"
+  - "3.6"
 env:
   - PIP_VERSION_NUMBER=3
   - PIP_VERSION_NUMBER=2
