@@ -10,10 +10,6 @@ platforms:
     image: ubuntu:18.04
 provisioner:
   name: ansible
-  inventory:
-    group_vars:
-      all:
-        pip_version: ${PIP_VERSION_NUMBER}
   lint:
     name: ansible-lint
 scenario:

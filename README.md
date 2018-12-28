@@ -33,9 +33,22 @@ executable
 ```
 
 Notes:
-- `executable` is omitted if `virtualenv` is defined.
-- `executable` by default uses the pip executable version being installed (a.k.a. `pip_version`). This can be overridden by providing the `pip` executable.
 - `name` is omitted if `requirements` is provided. They are mutually exclusive
+- `executable` is omitted if `virtualenv` is defined.
+- `executable` by default uses the pip executable version being installed (a.k.a. `pip_version`). This can be overridden by providing the pip `executable`.
+- `executable` will always attempt to use the setuptools for the version of Ansible running in the remote machine ([see this issue](https://github.com/ansible/ansible/issues/47361#issuecomment-431705748)).
+
+| Local Python | Remote Python | Executable | Requirements                    |
+|--------------|---------------|------------|---------------------------------|
+| 2            | 2             | 2          | None                            |
+| 2            | 2             | 3          | Install setuptools for Python 3 |
+| 2            | 3             | 3          | None                            |
+| 2            | 3             | 2          | Install setuptools for Python 2 |
+| 3            | 2             | 2          | None                            |
+| 3            | 2             | 3          | Install setuptools for Python 3 |
+| 3            | 3             | 3          | None                            |
+| 3            | 3             | 2          | Install setuptools for Python 2 |
+
 
 Examples:
 

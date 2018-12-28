@@ -5,9 +5,6 @@ services:
 python:
   - "2.7"
   - "3.6"
-env:
-  - PIP_VERSION_NUMBER=3
-  - PIP_VERSION_NUMBER=2
 install:
   - pip install molecule
   - pip install docker
