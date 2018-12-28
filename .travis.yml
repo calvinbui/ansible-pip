@@ -4,18 +4,18 @@ services:
   - docker
 matrix:
   include:
-  - python: "2.7"
-    env: UBUNTU_IMAGE_TAG=bionic PYTHON_INTERPRETOR=2
-  - python: "3.6"
-    env: UBUNTU_IMAGE_TAG=bionic PYTHON_INTERPRETOR=3
-  - python: "2.7"
-    env: UBUNTU_IMAGE_TAG=xenial PYTHON_INTERPRETOR=2
-  - python: "3.6"
-    env: UBUNTU_IMAGE_TAG=xenial PYTHON_INTERPRETOR=3
-  - python: "2.7"
-    env: UBUNTU_IMAGE_TAG=trusty PYTHON_INTERPRETOR=2
-  - python: "3.6"
-    env: UBUNTU_IMAGE_TAG=trusty PYTHON_INTERPRETOR=3
+    - python: "2.7"
+      env: UBUNTU_IMAGE_TAG=bionic PYTHON_INTERPRETOR=2
+    - python: "3.6"
+      env: UBUNTU_IMAGE_TAG=bionic PYTHON_INTERPRETOR=3
+    - python: "2.7"
+      env: UBUNTU_IMAGE_TAG=xenial PYTHON_INTERPRETOR=2
+    - python: "3.6"
+      env: UBUNTU_IMAGE_TAG=xenial PYTHON_INTERPRETOR=3
+    - python: "2.7"
+      env: UBUNTU_IMAGE_TAG=trusty PYTHON_INTERPRETOR=2
+    - python: "3.6"
+      env: UBUNTU_IMAGE_TAG=trusty PYTHON_INTERPRETOR=3
 install:
   - pip install molecule
   - pip install docker
