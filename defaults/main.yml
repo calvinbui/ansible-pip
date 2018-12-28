@@ -11,5 +11,5 @@ pip_install_packages:
     state: absent
   - name: requests
     virtualenv: /tmp/venv
-  - name: jinja2
-    version: 2.10
+  - name: pylint
+    version: 2.2.2

@@ -70,8 +70,8 @@ pip_install_packages:
     virtualenv: /tmp/venv
 
   # with version
-  - name: jinja2
-    version: 2.10
+  - name: pylint
+    version: 2.2.2
 
   # with requirements file
   - requirements: /tmp/requirements.txt
