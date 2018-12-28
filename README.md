@@ -71,7 +71,7 @@ pip_install_packages:
 
   # with version
   - name: pylint
-    version: 2.2.2
+    version: 1.9.4
 
   # with requirements file
   - requirements: /tmp/requirements.txt

@@ -12,4 +12,4 @@ pip_install_packages:
   - name: requests
     virtualenv: /tmp/venv
   - name: pylint
-    version: 2.2.2
+    version: 1.9.4
