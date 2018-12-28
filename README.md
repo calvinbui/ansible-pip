@@ -42,13 +42,13 @@ Notes:
 | Local Python | Remote Python | Executable | Requirements                    |
 |--------------|---------------|------------|---------------------------------|
 | 2            | 2             | 2          | None                            |
-| 2            | 2             | 3          | Install setuptools for Python 3 |
+| 2            | 2             | 3          | Install setuptools for Python 2 |
 | 2            | 3             | 3          | None                            |
-| 2            | 3             | 2          | Install setuptools for Python 2 |
+| 2            | 3             | 2          | Install setuptools for Python 3 |
 | 3            | 2             | 2          | None                            |
-| 3            | 2             | 3          | Install setuptools for Python 3 |
+| 3            | 2             | 3          | Install setuptools for Python 2 |
 | 3            | 3             | 3          | None                            |
-| 3            | 3             | 2          | Install setuptools for Python 2 |
+| 3            | 3             | 2          | Install setuptools for Python 3 |
 
 
 Examples:
