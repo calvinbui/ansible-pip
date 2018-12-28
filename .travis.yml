@@ -6,8 +6,8 @@ python:
   - "2.7"
   - "3.7"
 env:
-  - PIP_VERSION=3
-  - PIP_VERSION=2
+  - PIP_VERSION_NUMBER=3
+  - PIP_VERSION_NUMBER=2
 install:
   - pip install molecule
   - pip install docker
