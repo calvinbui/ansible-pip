@@ -1,5 +1,6 @@
-# Ansible pip
+[![](https://img.shields.io/ansible/role/d/35859.svg)](https://galaxy.ansible.com/calvinbui/ansible_pip)
 
+# Ansible pip
 
 Installs the Python package manager `pip` based on the version provided or the version of Python that Ansible grabs as a fallback.
 
