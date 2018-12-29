@@ -30,7 +30,7 @@
         pip2
       {%- endif -%}
 
-- name: Install pip for Python version Ansible is using
+- name: Install pip{{ pip_version_to_use }}
   apt:
     name: "{{ pip_apt_package }}"
     state: present
@@ -52,7 +52,7 @@
         []
       {%- endif -%}
 
-- name: Install setuptools if required
+- name: Install setuptools
   apt:
     name: "{{ pip_setuptools_package }}"
     state: present
@@ -62,7 +62,7 @@
   delay: 5
   when: pip_setuptools_package | length
 
-- name: Install pip packages
+- name: Install pip package/s
   pip:
     name: "{{ (item.name | default(item)) if item.requirements is not defined else omit }}"
     version: "{{ item.version | default(omit) }}"
