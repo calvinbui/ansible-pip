@@ -37,18 +37,18 @@ Notes:
 - `name` is omitted if `requirements` is provided. They are mutually exclusive
 - `executable` is omitted if `virtualenv` is defined.
 - `executable` by default uses the pip executable version being installed (a.k.a. `pip_version`). This can be overridden by providing the pip `executable`.
-- `executable` will always attempt to use the setuptools for the version of Ansible running in the remote machine ([see this issue](https://github.com/ansible/ansible/issues/47361#issuecomment-431705748)).
+- `executable` will always attempt to use the setuptools for the version of Ansible running in the remote machine ([see this issue](https://github.com/ansible/ansible/issues/47361#issuecomment-431705748)). This role will ensure this is covered by following the table below:
 
-| Local Python | Remote Python | Executable | Requirements                    |
-|--------------|---------------|------------|---------------------------------|
-| 2            | 2             | 2          | None                            |
-| 2            | 2             | 3          | Install setuptools for Python 2 |
-| 2            | 3             | 3          | None                            |
-| 2            | 3             | 2          | Install setuptools for Python 3 |
-| 3            | 2             | 2          | None                            |
-| 3            | 2             | 3          | Install setuptools for Python 2 |
-| 3            | 3             | 3          | None                            |
-| 3            | 3             | 2          | Install setuptools for Python 3 |
+| Local Python | Remote Python | Executable | Requirements                     |
+|--------------|---------------|------------|----------------------------------|
+| 2            | 2             | 2          | None                             |
+| 2            | 2             | 3          | Installs setuptools for Python 2 |
+| 2            | 3             | 3          | None                             |
+| 2            | 3             | 2          | Installs setuptools for Python 3 |
+| 3            | 2             | 2          | None                             |
+| 3            | 2             | 3          | Installs setuptools for Python 2 |
+| 3            | 3             | 3          | None                             |
+| 3            | 3             | 2          | Installs setuptools for Python 3 |
 
 
 Examples:
@@ -70,8 +70,8 @@ pip_install_packages:
     virtualenv: /tmp/venv
 
   # with version
-  - name: numpy
-    version: 1.15.4
+  - name: pylint
+    version: 1.9.4
 
   # with requirements file
   - requirements: /tmp/requirements.txt

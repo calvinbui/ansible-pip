@@ -11,5 +11,5 @@ pip_install_packages:
     state: absent
   - name: requests
     virtualenv: /tmp/venv
-  - name: numpy
-    version: 1.15.4
+  - name: pylint
+    version: 1.9.4
