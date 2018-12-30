@@ -43,9 +43,9 @@
   set_fact:
     pip_setuptools_package: >-
       {%- if pip_version_to_use|int != ansible_python.version.major|int -%}
-        {%- if ansible_python.version.major == 3 -%}
+        {%- if ansible_python.version.major|int == 3 -%}
           python3-setuptools
-        {%- elif ansible_python.version.major == 2 -%}
+        {%- elif ansible_python.version.major|int == 2 -%}
           python-setuptools
         {%- endif -%}
       {%- else -%}
