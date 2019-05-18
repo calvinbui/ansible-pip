@@ -1,0 +1,48 @@
+---
+
+- name: Set pip version to {{ pip_version_to_use }}
+  set_fact:
+    pip_apt_package: >-
+      {%- if pip_version_to_use|int == 3 -%}
+        python3-pip
+      {%- elif pip_version_to_use|int == 2 -%}
+        python-pip
+      {%- endif -%}
+    pip_executable: >-
+      {%- if pip_version_to_use|int == 3 -%}
+        pip3
+      {%- elif pip_version_to_use|int == 2 -%}
+        pip2
+      {%- endif -%}
+
+- name: Install pip{{ pip_version_to_use }}
+  apt:
+    name: "{{ pip_apt_package }}"
+    state: present
+  register: result
+  until: result is success
+  retries: 5
+  delay: 5
+
+- name: Check if setuptools is needed
+  set_fact:
+    pip_setuptools_package: >-
+      {%- if pip_version_to_use|int != ansible_python.version.major|int -%}
+        {%- if ansible_python.version.major|int == 3 -%}
+          python3-setuptools
+        {%- elif ansible_python.version.major|int == 2 -%}
+          python-setuptools
+        {%- endif -%}
+      {%- else -%}
+        []
+      {%- endif -%}
+
+- name: Install setuptools
+  apt:
+    name: "{{ pip_setuptools_package }}"
+    state: present
+  register: result
+  until: result is success
+  retries: 5
+  delay: 5
+  when: pip_setuptools_package | length

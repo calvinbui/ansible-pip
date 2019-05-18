@@ -1,0 +1,35 @@
+---
+
+- name: Set pip version to {{ pip_version_to_use }}
+  set_fact:
+    pip_apk_package: >-
+      {%- if pip_version_to_use|int == 3 -%}
+        python3
+      {%- elif pip_version_to_use|int == 2 -%}
+        py2-pip
+      {%- endif -%}
+
+- name: Install pip{{ pip_version_to_use }}
+  apk:
+    name: "{{ pip_apk_package }}"
+    update_cache: true
+    state: present
+
+- name: Check if setuptools is needed
+  set_fact:
+    pip_setuptools_package: >-
+      {%- if pip_version_to_use|int != ansible_python.version.major|int -%}
+        {%- if ansible_python.version.major|int == 3 -%}
+          py3-setuptools
+        {%- elif ansible_python.version.major|int == 2 -%}
+          python-setuptools
+        {%- endif -%}
+      {%- else -%}
+        []
+      {%- endif -%}
+
+- name: Install setuptools
+  apk:
+    name: "{{ pip_setuptools_package }}"
+    update_cache: true
+    state: present
