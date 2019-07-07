@@ -1,6 +1,6 @@
 ---
 
-- name: Install pip{{ pip_version_to_use }}
+- name: Install pip3 and setuptools
   apt:
     name: "{{ item }}"
     state: present
