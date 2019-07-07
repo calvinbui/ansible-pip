@@ -10,7 +10,6 @@ pip_install_packages:
     executable: pip3
     state: absent
   - name: requests
-    executable: pip3
     virtualenv: /tmp/venv
   - name: pylint
     version: 1.9.4
