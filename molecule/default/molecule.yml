@@ -8,8 +8,6 @@ lint:
 platforms:
   - name: ansible-pip-ubuntu
     image: ubuntu:${UBUNTU_IMAGE_TAG:-latest}
-  - name: ansible-pip-alpine
-    image: alpine
 provisioner:
   name: ansible
   options:
