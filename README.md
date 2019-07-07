@@ -3,7 +3,9 @@
 
 # Ansible pip
 
-Installs the Python package manager `pip` based on the version provided or the version of Python that Ansible grabs as a fallback.
+Python 3 pip, setuptools and package installer.
+
+Installs the Python package manager `pip3` based on the version provided or the version of Python that Ansible grabs as a fallback.
 
 Also installs pip packages with any of the parameters provided by the pip module.
 

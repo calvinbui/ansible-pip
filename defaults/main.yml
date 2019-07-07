@@ -1,15 +1,17 @@
 ---
 
-# set to 2 or 3 if required. leave as is to use the python Ansible uses
-pip_version: null
-
 pip_install_packages:
   - name: virtualenv
+    executable: pip3
   - name: pyyaml
+    executable: pip3
     state: present
   - name: awscli
+    executable: pip3
     state: absent
   - name: requests
+    executable: pip3
     virtualenv: /tmp/venv
   - name: pylint
     version: 1.9.4
+    executable: pip3

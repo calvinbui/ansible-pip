@@ -4,12 +4,11 @@ galaxy_info:
   description: pip 2/3 for Ubuntu LTS
   company: https://calvin.me
   license: GPLv3
-  min_ansible_version: 2.7
+  min_ansible_version: 2.8
   platforms:
     - name: Ubuntu
       versions:
         - bionic
   galaxy_tags:
-    - pip
     - pip3
 dependencies: []

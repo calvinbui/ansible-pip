@@ -1,34 +1,10 @@
 ---
 
-- name: Determine pip version to install and use
-  set_fact:
-    pip_version_to_use: >-
-      {%- if pip_version -%}
-        {%- if pip_version|int == 3 -%}
-          3
-        {%- elif pip_version|int == 2 -%}
-          2
-        {%- endif -%}
-      {%- elif ansible_python.version.major|int == 3 -%}
-        3
-      {%- elif ansible_python.version.major|int == 2 -%}
-        2
-      {%- endif -%}
-
 - import_tasks: install-apt.yml
   when: ansible_os_family == 'Debian'
 
 - import_tasks: install-apk.yml
   when: ansible_os_family == 'Alpine'
-
-- name: Set pip version to {{ pip_version_to_use }}
-  set_fact:
-    pip_executable: >-
-      {%- if pip_version_to_use|int == 3 -%}
-        pip3
-      {%- elif pip_version_to_use|int == 2 -%}
-        pip2
-      {%- endif -%}
 
 - name: Install pip package/s
   pip:
