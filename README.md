@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.com/calvinbui/ansible-pip.svg?branch=master)](https://travis-ci.com/calvinbui/ansible-pip)
-[![](https://img.shields.io/ansible/role/d/35859.svg)](https://galaxy.ansible.com/calvinbui/ansible_pip)
+![GitHub release](https://img.shields.io/github/release/calvinbui/ansible-pip.svg)
+![Ansible Quality Score](https://img.shields.io/ansible/quality/35859.svg)
+![Ansible Role](https://img.shields.io/ansible/role/d/35859.svg)
 
 # Ansible pip
 
